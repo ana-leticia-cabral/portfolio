@@ -88,6 +88,28 @@
     margin-top: 6px;
     color: var(--ink-soft);
     font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sidebar .cargo .cargo-rosa{
+    color: var(--rose-deep);
+    font-weight: 500;
+  }
+
+  .sidebar .cargo .tag-bb{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    padding: 4px 12px;
+    width: fit-content;
+    border-radius: var(--radius-pill);
+    background: var(--rose-soft);
+    color: var(--rose-deep);
+    font-size: 0.8rem;
+    font-weight: 500;
   }
 
   .nav-pills{
@@ -139,7 +161,35 @@
     font-size: 1.05rem;
   }
 
-  .divisor{ margin: 44px 0 0; opacity: 1; }
+  .divisor-wrap{
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    margin: 44px 0 0;
+    flex-wrap: wrap;
+  }
+
+  .divisor{ opacity: 1; }
+
+  .formula-card{
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--rose-deep);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    padding: 10px 18px;
+    border-left: 2px solid var(--eyebrow);
+  }
+
+  .formula-card .label{
+    font-family: var(--font-body);
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
 
   /* =====================================================
      4) PROJETOS
@@ -148,7 +198,9 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
   }
 
   .projetos-head h3{
@@ -167,7 +219,7 @@
   .projetos-grid{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 32px;
   }
 
   .card{
@@ -177,56 +229,65 @@
     border: 1px solid var(--pill-border);
     display: flex;
     flex-direction: column;
+    box-shadow: 0 14px 32px -24px rgba(28,26,22,0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -22px rgba(28,26,22,0.45);
   }
 
   .card-imagem{
     position: relative;
-    height: 260px;
+    height: 220px;
     background-size: cover;
     background-position: center;
     background-color: var(--accent-blue2);
+    overflow: hidden;
   }
 
   .card-imagem .topo{
     position: absolute;
-    top: 18px;
-    left: 18px;
-    right: 18px;
+    top: 16px;
+    left: 16px;
+    right: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   .card-imagem .tag-categoria{
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
+    font-size: 0.64rem;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     font-weight: 600;
-    color: var(--ink);
-    background: rgba(255,255,255,0.82);
-    padding: 5px 10px;
+    color: var(--rose-deep);
+    background: rgba(255,255,255,0.92);
+    padding: 5px 11px;
     border-radius: var(--radius-pill);
   }
 
   .card-imagem .tag-ano{
-    font-size: 0.75rem;
-    background: rgba(255,255,255,0.9);
+    font-size: 0.72rem;
+    color: var(--ink);
+    background: rgba(255,255,255,0.92);
     padding: 5px 12px;
     border-radius: var(--radius-pill);
   }
 
   .card-imagem .titulo-overlay{
     position: absolute;
-    left: 18px;
-    right: 18px;
+    left: 16px;
+    right: 16px;
     bottom: 16px;
   }
 
   .card-imagem .titulo-overlay::before{
     content: "";
     position: absolute;
-    inset: -60px -18px -16px -18px;
-    background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
+    inset: -60px -16px -16px -16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0));
     z-index: 0;
   }
 
@@ -237,15 +298,15 @@
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 700;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     color: #fff;
   }
 
   .card-corpo{
-    padding: 20px 22px 24px;
+    padding: 22px 24px 26px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
     flex: 1;
   }
 
@@ -253,6 +314,7 @@
     margin: 0;
     color: var(--ink-soft);
     font-size: 0.92rem;
+    line-height: 1.55;
   }
 
   .card-tags{
@@ -260,14 +322,17 @@
     flex-wrap: wrap;
     gap: 8px;
     margin-top: auto;
+    padding-top: 4px;
+    border-top: 1px dashed var(--line);
   }
 
   .card-tags span{
-    font-size: 0.78rem;
-    border: 1px solid var(--pill-border);
+    font-size: 0.75rem;
+    border: 1px solid var(--rose-soft);
+    background: var(--rose-soft);
     border-radius: var(--radius-pill);
     padding: 5px 12px;
-    color: var(--ink);
+    color: var(--rose-deep);
   }
 
   /* =====================================================
@@ -277,7 +342,9 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
   }
 
   .pratica-head h3{
@@ -294,28 +361,56 @@
   }
 
   .pratica-lista{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .pratica-item{
+    background: var(--bg-card);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--pill-border);
+    box-shadow: 0 14px 32px -24px rgba(28,26,22,0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
   }
 
-  .pratica-item{
-    display: grid;
-    grid-template-columns: 130px 1fr auto;
-    gap: 20px;
-    align-items: start;
-    padding: 22px 0;
-    border-top: 1px solid var(--line);
+  .pratica-item:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -22px rgba(28,26,22,0.45);
   }
 
-  .pratica-item:last-child{ border-bottom: 1px solid var(--line); }
+  .pratica-imagem{
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--rose-soft), var(--bg-card));
+  }
+
+  .pratica-imagem svg{ width: 56px; height: 56px; }
+
+  .pratica-corpo-wrap{
+    padding: 22px 26px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+  }
 
   .pratica-item .categoria{
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    display: inline-block;
+    width: fit-content;
+    font-size: 0.66rem;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     font-weight: 600;
     color: var(--rose-deep);
-    padding-top: 3px;
+    background: var(--rose-soft);
+    padding: 5px 11px;
+    border-radius: var(--radius-pill);
   }
 
   .pratica-item .corpo h4{
@@ -327,20 +422,23 @@
   }
 
   .pratica-item .corpo p{
-    margin: 0 0 12px;
+    margin: 0;
     font-size: 0.9rem;
     color: var(--ink-soft);
-    max-width: 480px;
+    line-height: 1.55;
   }
 
   .pratica-tags{
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
   }
 
   .pratica-tags span{
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     background: var(--rose-soft);
     color: var(--rose-deep);
     border-radius: var(--radius-pill);
@@ -349,18 +447,15 @@
   }
 
   .pratica-item .link{
-    align-self: center;
     font-size: 0.85rem;
     color: var(--rose-deep);
-    border-bottom: 1px solid var(--accent-blue);
-    white-space: nowrap;
-    padding-top: 3px;
+    font-weight: 500;
   }
 
   .pratica-item .link:hover{ opacity: 0.7; }
 
   @media (max-width: 640px){
-    .pratica-item{ grid-template-columns: 1fr; gap: 8px; }
+    .pratica-lista{ grid-template-columns: 1fr; }
   }
 
   /* =====================================================
@@ -568,19 +663,20 @@
   <aside class="sidebar">
     <div>
       <h1>Ana Letícia Cabral do Rosário</h1>
-      <div class="cargo">Analista de Dados</div>
+      <div class="cargo">
+        <span class="cargo-rosa">Analista de Dados</span>
+        <span class="cargo-rosa">Graduanda em Ciência da Computação</span>
+        <span class="tag-bb">Estágio Banco do Brasil · 2025–2026</span>
+      </div>
     </div>
 
     <nav class="nav-pills">
       <a href="#projetos">Projetos</a>
       <a href="#pratica">Prática técnica</a>
-      <a href="https://github.com/ana-leticia-cabral" target="_blank" rel="noopener">GitHub</a>
       <a href="#sobre">Sobre</a>
       <a href="#meutrabalho">Avaliação de desempenho</a>
       <a href="#contato">Contato</a>
     </nav>
-
-    <div class="sidebar-footer">© 2026 — Portfólio de Dados</div>
   </aside>
 
   <!-- ================= CONTEÚDO ================= -->
@@ -592,16 +688,28 @@
       <h2>Transformando dados em decisões,<br>uma análise por vez.</h2>
       <p>Uma coleção dos projetos que construí durante meus estudos em análise de dados e ciência de dados.</p>
 
-      <svg class="divisor" width="340" height="110" viewBox="0 0 340 110" fill="none">
-        <rect x="0"   y="70" width="34" height="40" rx="4" fill="#f3dbdd"/>
-        <rect x="44"  y="46" width="34" height="64" rx="4" fill="#e9a9b4"/>
-        <rect x="88"  y="58" width="34" height="52" rx="4" fill="#e2879a"/>
-        <rect x="132" y="14" width="34" height="96" rx="4" fill="#9c5460"/>
-        <rect x="176" y="34" width="34" height="76" rx="4" fill="#b5677a"/>
-        <rect x="220" y="52" width="34" height="58" rx="4" fill="#e2879a"/>
-        <rect x="264" y="64" width="34" height="46" rx="4" fill="#e9a9b4"/>
-        <rect x="306" y="80" width="34" height="30" rx="4" fill="#f3dbdd"/>
-      </svg>
+      <div class="divisor-wrap">
+        <svg class="divisor" width="340" height="110" viewBox="0 0 340 110" fill="none">
+          <rect x="0"   y="72" width="34" height="38" rx="8" fill="#f6e4e6"/>
+          <rect x="44"  y="54" width="34" height="56" rx="8" fill="#f1d3d7"/>
+          <rect x="88"  y="60" width="34" height="50" rx="8" fill="#f1d3d7"/>
+          <rect x="132" y="30" width="34" height="80" rx="8" fill="#e6b4bb"/>
+          <rect x="176" y="42" width="34" height="68" rx="8" fill="#e6b4bb"/>
+          <rect x="220" y="56" width="34" height="54" rx="8" fill="#f1d3d7"/>
+          <rect x="264" y="66" width="34" height="44" rx="8" fill="#f1d3d7"/>
+          <rect x="306" y="78" width="34" height="32" rx="8" fill="#f6e4e6"/>
+          <polyline points="17,66 61,44 105,52 149,24 193,34 237,50 281,58 323,72"
+            fill="none" stroke="#b5677a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="17"  cy="66" r="2.5" fill="#b5677a"/>
+          <circle cx="61"  cy="44" r="2.5" fill="#b5677a"/>
+          <circle cx="105" cy="52" r="2.5" fill="#b5677a"/>
+          <circle cx="149" cy="24" r="2.5" fill="#b5677a"/>
+          <circle cx="193" cy="34" r="2.5" fill="#b5677a"/>
+          <circle cx="237" cy="50" r="2.5" fill="#b5677a"/>
+          <circle cx="281" cy="58" r="2.5" fill="#b5677a"/>
+          <circle cx="323" cy="72" r="2.5" fill="#b5677a"/>
+        </svg>
+      </div>
     </section>
 
     <!-- ---------- PROJETOS ---------- -->
@@ -675,8 +783,6 @@
         <a class="btn btn-secundario" href="https://github.com/ana-leticia-cabral" target="_blank" rel="noopener">GitHub</a>
       </div>
     </section>
-
-    <footer>© 2026 — Feito com carinho.</footer>
 
   </main>
 </div>
@@ -770,19 +876,54 @@
   const listaPratica = document.getElementById("pratica-lista");
   document.getElementById("contagem-pratica").textContent = PRATICA.length + " atividades";
 
+  const ICONES_PRATICA = {
+    sql: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="24" cy="10" rx="16" ry="6" stroke="#9c5460" stroke-width="2"/>
+      <path d="M8 10V24C8 27.3 15.2 30 24 30C32.8 30 40 27.3 40 24V10" stroke="#9c5460" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 24V38C8 41.3 15.2 44 24 44C32.8 44 40 41.3 40 38V24" stroke="#e6b4bb" stroke-width="2" stroke-linecap="round"/>
+    </svg>`,
+    python: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 12L6 20L14 28" stroke="#9c5460" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M34 12L42 20L34 28" stroke="#e6b4bb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M27 8L21 40" stroke="#b5677a" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>`,
+    estatistica: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="7"  y="26" width="8" height="16" rx="2" fill="#f1d3d7"/>
+      <rect x="20" y="14" width="8" height="28" rx="2" fill="#e6b4bb"/>
+      <rect x="33" y="20" width="8" height="22" rx="2" fill="#9c5460"/>
+    </svg>`,
+    certificacao: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="18" r="12" stroke="#9c5460" stroke-width="2"/>
+      <path d="M17 28L14 42L24 36L34 42L31 28" stroke="#e6b4bb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M18 18L22 22L30 13" stroke="#9c5460" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
+  };
+
+  function iconePratica(categoria){
+    const c = categoria.toLowerCase();
+    if(c.includes("sql") || c.includes("banco")) return ICONES_PRATICA.sql;
+    if(c.includes("python")) return ICONES_PRATICA.python;
+    if(c.includes("estat")) return ICONES_PRATICA.estatistica;
+    if(c.includes("certif")) return ICONES_PRATICA.certificacao;
+    return ICONES_PRATICA.estatistica;
+  }
+
   PRATICA.forEach(a => {
     const item = document.createElement("div");
     item.className = "pratica-item";
     item.innerHTML = `
-      <div class="categoria">${a.categoria}</div>
-      <div class="corpo">
-        <h4>${a.titulo}</h4>
-        <p>${a.descricao}</p>
+      <div class="pratica-imagem">${iconePratica(a.categoria)}</div>
+      <div class="pratica-corpo-wrap">
+        <div class="categoria">${a.categoria}</div>
+        <div class="corpo">
+          <h4>${a.titulo}</h4>
+          <p>${a.descricao}</p>
+        </div>
         <div class="pratica-tags">
           ${a.tags.map(t => `<span>${t}</span>`).join("")}
         </div>
+        ${a.link ? `<a class="link" href="${a.link}" target="_blank" rel="noopener">Ver mais →</a>` : ""}
       </div>
-      ${a.link ? `<a class="link" href="${a.link}" target="_blank" rel="noopener">Ver mais →</a>` : ""}
     `;
     listaPratica.appendChild(item);
   });
