@@ -383,14 +383,15 @@
   }
 
   .pratica-imagem{
-    height: 120px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--rose-soft), var(--bg-card));
+    overflow: hidden;
   }
 
-  .pratica-imagem svg{ width: 56px; height: 56px; }
+  .pratica-imagem svg{ width: 100%; height: 100%; }
 
   .pratica-corpo-wrap{
     padding: 22px 26px 24px;
@@ -877,25 +878,119 @@
   document.getElementById("contagem-pratica").textContent = PRATICA.length + " atividades";
 
   const ICONES_PRATICA = {
-    sql: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="24" cy="10" rx="16" ry="6" stroke="#9c5460" stroke-width="2"/>
-      <path d="M8 10V24C8 27.3 15.2 30 24 30C32.8 30 40 27.3 40 24V10" stroke="#9c5460" stroke-width="2" stroke-linecap="round"/>
-      <path d="M8 24V38C8 41.3 15.2 44 24 44C32.8 44 40 41.3 40 38V24" stroke="#e6b4bb" stroke-width="2" stroke-linecap="round"/>
+    sql: `<svg viewBox="0 0 340 180" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <rect width="340" height="180" fill="url(#sqlbg)"/>
+      <defs>
+        <linearGradient id="sqlbg" x1="0" y1="0" x2="340" y2="180" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#f6e4e6"/>
+          <stop offset="1" stop-color="#f8ece3"/>
+        </linearGradient>
+        <linearGradient id="ring1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fdf3f4"/>
+          <stop offset="1" stop-color="#f1d3d7"/>
+        </linearGradient>
+        <linearGradient id="ring2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f1cdd3"/>
+          <stop offset="1" stop-color="#e6b4bb"/>
+        </linearGradient>
+        <linearGradient id="ring3" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#dd97a3"/>
+          <stop offset="1" stop-color="#c47c8a"/>
+        </linearGradient>
+      </defs>
+      <g opacity="0.4" stroke="#e6b4bb" stroke-width="1">
+        <line x1="30" y1="30" x2="30" y2="150"/>
+        <line x1="310" y1="30" x2="310" y2="150"/>
+        <line x1="30" y1="30" x2="310" y2="30"/>
+        <line x1="30" y1="150" x2="310" y2="150"/>
+      </g>
+      <path d="M138 96V126C138 133.7 152.5 140 170 140C187.5 140 202 133.7 202 126V96" fill="url(#ring3)" stroke="#9c5460" stroke-width="2"/>
+      <ellipse cx="170" cy="96" rx="32" ry="12" fill="url(#ring3)" stroke="#9c5460" stroke-width="2"/>
+      <path d="M138 68V98C138 105.7 152.5 112 170 112C187.5 112 202 105.7 202 98V68" fill="url(#ring2)" stroke="#9c5460" stroke-width="2"/>
+      <ellipse cx="170" cy="68" rx="32" ry="12" fill="url(#ring2)" stroke="#9c5460" stroke-width="2"/>
+      <path d="M138 40V70C138 77.7 152.5 84 170 84C187.5 84 202 77.7 202 70V40" fill="url(#ring1)" stroke="#9c5460" stroke-width="2"/>
+      <ellipse cx="170" cy="40" rx="32" ry="12" fill="url(#ring1)" stroke="#9c5460" stroke-width="2"/>
+      <ellipse cx="170" cy="40" rx="20" ry="6" fill="none" stroke="#b5677a" stroke-width="1.2" stroke-dasharray="2 3"/>
+      <circle cx="115" cy="55" r="3" fill="#c47c8a"/>
+      <circle cx="115" cy="80" r="3" fill="#e6b4bb"/>
+      <circle cx="115" cy="105" r="3" fill="#f1d3d7"/>
+      <path d="M115 55V105" stroke="#e6b4bb" stroke-width="1.2" stroke-dasharray="2 3"/>
     </svg>`,
-    python: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M14 12L6 20L14 28" stroke="#9c5460" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M34 12L42 20L34 28" stroke="#e6b4bb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M27 8L21 40" stroke="#b5677a" stroke-width="2.4" stroke-linecap="round"/>
+    python: `<svg viewBox="0 0 340 180" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <rect width="340" height="180" fill="url(#pybg)"/>
+      <defs>
+        <linearGradient id="pybg" x1="0" y1="0" x2="340" y2="180" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#f6e4e6"/>
+          <stop offset="1" stop-color="#f8ece3"/>
+        </linearGradient>
+      </defs>
+      <rect x="34" y="24" width="272" height="132" rx="14" fill="#fdf6f4" stroke="#e6b4bb" stroke-width="1.6"/>
+      <rect x="34" y="24" width="272" height="26" rx="14" fill="#f1d3d7"/>
+      <rect x="34" y="38" width="272" height="12" fill="#f1d3d7"/>
+      <circle cx="50" cy="37" r="4.5" fill="#e2879a"/>
+      <circle cx="64" cy="37" r="4.5" fill="#eec7cc"/>
+      <circle cx="78" cy="37" r="4.5" fill="#fdf6f4"/>
+      <text x="52" y="72"  font-family="'Courier New', monospace" font-size="13">
+        <tspan fill="#b5677a" font-weight="700">import</tspan><tspan fill="#6b5b53"> numpy </tspan><tspan fill="#b5677a" font-weight="700">as</tspan><tspan fill="#6b5b53"> np</tspan>
+      </text>
+      <text x="52" y="92"  font-family="'Courier New', monospace" font-size="13">
+        <tspan fill="#b5677a" font-weight="700">import</tspan><tspan fill="#6b5b53"> pandas </tspan><tspan fill="#b5677a" font-weight="700">as</tspan><tspan fill="#6b5b53"> pd</tspan>
+      </text>
+      <text x="52" y="122" font-family="'Courier New', monospace" font-size="13">
+        <tspan fill="#9c5460" font-weight="700">print</tspan><tspan fill="#6b5b53">(df.head())</tspan>
+      </text>
+      <rect x="52" y="132" width="9" height="14" fill="#c47c8a" opacity="0.85"/>
     </svg>`,
-    estatistica: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="7"  y="26" width="8" height="16" rx="2" fill="#f1d3d7"/>
-      <rect x="20" y="14" width="8" height="28" rx="2" fill="#e6b4bb"/>
-      <rect x="33" y="20" width="8" height="22" rx="2" fill="#9c5460"/>
+    estatistica: `<svg viewBox="0 0 340 180" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <rect width="340" height="180" fill="url(#statbg)"/>
+      <defs>
+        <linearGradient id="statbg" x1="0" y1="0" x2="340" y2="180" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#f6e4e6"/>
+          <stop offset="1" stop-color="#f8ece3"/>
+        </linearGradient>
+      </defs>
+      <g opacity="0.5" stroke="#e6b4bb" stroke-width="1">
+        <line x1="20" y1="40" x2="320" y2="40"/>
+        <line x1="20" y1="75" x2="320" y2="75"/>
+        <line x1="20" y1="110" x2="320" y2="110"/>
+        <line x1="20" y1="145" x2="320" y2="145"/>
+      </g>
+      <rect x="45"  y="95"  width="30" height="55" rx="5" fill="#f1d3d7" stroke="#9c5460" stroke-width="1.6"/>
+      <rect x="95"  y="60"  width="30" height="90" rx="5" fill="#e6b4bb" stroke="#9c5460" stroke-width="1.6"/>
+      <rect x="145" y="30"  width="30" height="120" rx="5" fill="#b5677a" stroke="#9c5460" stroke-width="1.6"/>
+      <rect x="195" y="75"  width="30" height="75" rx="5" fill="#e6b4bb" stroke="#9c5460" stroke-width="1.6"/>
+      <rect x="245" y="105" width="30" height="45" rx="5" fill="#f1d3d7" stroke="#9c5460" stroke-width="1.6"/>
+      <path d="M60 88L110 52L160 24L210 66L260 98" fill="none" stroke="#9c5460" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="60" cy="88" r="4" fill="#fff" stroke="#9c5460" stroke-width="2"/>
+      <circle cx="110" cy="52" r="4" fill="#fff" stroke="#9c5460" stroke-width="2"/>
+      <circle cx="160" cy="24" r="4" fill="#fff" stroke="#9c5460" stroke-width="2"/>
+      <circle cx="210" cy="66" r="4" fill="#fff" stroke="#9c5460" stroke-width="2"/>
+      <circle cx="260" cy="98" r="4" fill="#fff" stroke="#9c5460" stroke-width="2"/>
     </svg>`,
-    certificacao: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="24" cy="18" r="12" stroke="#9c5460" stroke-width="2"/>
-      <path d="M17 28L14 42L24 36L34 42L31 28" stroke="#e6b4bb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M18 18L22 22L30 13" stroke="#9c5460" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    certificacao: `<svg viewBox="0 0 340 180" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <rect width="340" height="180" fill="url(#certbg)"/>
+      <defs>
+        <linearGradient id="certbg" x1="0" y1="0" x2="340" y2="180" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#f6e4e6"/>
+          <stop offset="1" stop-color="#f8ece3"/>
+        </linearGradient>
+      </defs>
+      <rect x="26" y="18" width="288" height="144" rx="4" fill="#fdf6f4" stroke="#9c5460" stroke-width="2"/>
+      <rect x="34" y="26" width="272" height="128" rx="2" fill="none" stroke="#e6b4bb" stroke-width="1.2"/>
+      <path d="M34 26L44 26L34 36Z" fill="#e6b4bb"/>
+      <path d="M306 26L296 26L306 36Z" fill="#e6b4bb"/>
+      <path d="M34 154L44 154L34 144Z" fill="#e6b4bb"/>
+      <path d="M306 154L296 154L306 144Z" fill="#e6b4bb"/>
+      <text x="170" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="9" letter-spacing="2.5" fill="#b5677a">CERTIFICADO DE CONCLUSÃO</text>
+      <text x="170" y="76" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="17" fill="#9c5460">Google Data Analytics</text>
+      <line x1="90" y1="88" x2="250" y2="88" stroke="#e6b4bb" stroke-width="1"/>
+      <text x="170" y="102" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8a7b74">outorgado a</text>
+      <text x="170" y="120" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="13" fill="#6b5b53">Ana Letícia Cabral</text>
+      <line x1="60" y1="140" x2="130" y2="140" stroke="#c9beb8" stroke-width="0.8"/>
+      <text x="95" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#8a7b74">assinatura</text>
+      <circle cx="262" cy="132" r="18" fill="#e6b4bb" stroke="#9c5460" stroke-width="1.6"/>
+      <path d="M262 122L265 129L272 130L267 135L268 142L262 138.5L256 142L257 135L252 130L259 129Z" fill="#fdf6f4"/>
+      <path d="M252 145L248 156L262 150L276 156L272 145" fill="#e6b4bb" stroke="#9c5460" stroke-width="1.4" stroke-linejoin="round"/>
     </svg>`,
   };
 
