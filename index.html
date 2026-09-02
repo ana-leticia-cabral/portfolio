@@ -588,9 +588,13 @@
 
   .certificacao-item .link:hover{ opacity: 0.7; }
 
+  
+  
   @media (max-width: 640px){
     .certificacao-lista{ grid-template-columns: 1fr; }
   }
+
+  
 
   /* =====================================================
      5) SOBRE e O QUE DIZEM SOBRE MIM
@@ -805,9 +809,9 @@
     </div>
 
     <nav class="nav-pills">
+      <a href="#certificacoes">Certificações</a>
       <a href="#projetos">Projetos</a>
       <a href="#pratica">Prática técnica</a>
-      <a href="#certificacoes">Certificações</a>
       <a href="#meutrabalho">Avaliação de desempenho</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -854,6 +858,20 @@
       </div>
     </section>
 
+    <!-- ---------- CERTIFICAÇÕES ---------- -->
+    <section id="certificacoes">
+      <div class="eyebrow">Formações</div>
+      <div class="certificacao-head">
+        <h3>Certificações</h3>
+        <div class="contagem" id="contagem-certificacao"></div>
+      </div>
+
+      <div class="certificacao-lista" id="certificacao-lista">
+        <!-- os itens são gerados pelo JavaScript a partir da lista CERTIFICACAO -->
+      </div>
+    </section>
+    
+
     <!-- ---------- PROJETOS ---------- -->
     <section id="projetos">
       <div class="eyebrow">TRABALHOS SELECIONADOS</div>
@@ -880,20 +898,7 @@
       </div>
     </section>
 
-    <!-- ---------- CERTIFICAÇÕES ---------- -->
-    <section id="certificacoes">
-      <div class="eyebrow">Formações</div>
-      <div class="certificacao-head">
-        <h3>Certificações</h3>
-        <div class="contagem" id="contagem-certificacao"></div>
-      </div>
-
-      <div class="certificacao-lista" id="certificacao-lista">
-        <!-- os itens são gerados pelo JavaScript a partir da lista CERTIFICACAO -->
-      </div>
-    </section>
     
-
      <!-- ---------- O QUE DIZEM SOBRE O MEU TRABALHO ---------- -->
     <section class="meutrabalho" id="meutrabalho">
       <div class="eyebrow">O QUE DIZEM SOBRE O MEU TRABALHO</div>
@@ -1008,14 +1013,14 @@
   ===================================================== */
   const CERTIFICACAO = [
     {
-      categoria: "Formação Plena",
+      categoria: "Formação Plena — 2026 ",
       titulo: "Análise e Ciência de dados — Udemy",
       descricao: "Data Science e Inteligência Artificial c/ Python, Excel e R, básico ao avançado.",
       tags: ["Análise descritiva", "Análise inferencial", "Python", "R", "Machine Learning"],
       link: "https://github.com/ana-leticia-cabral/formacao-plena-analise-ciencia-dados-2026"
     },
     {
-      categoria: "Certificação profissional",
+      categoria: "Certificação profissional — (2025/2026)",
       titulo: "Google Data Analytics — Coursera",
       descricao: "Formação cobrindo os fundamentos da análise de dados, englobando do tratamento ao storytelling para tomada de decisão. Certificação obtida em maio de 2026 por meio de uma bolsa de estudos concedida em parceria com a agência de estágio, como marco de início das minhas atividades na sede do Banco do Brasil (Brasília).",
       tags: ["Google Sheets", "Google BigQuery", "Python", "Tableau"],
