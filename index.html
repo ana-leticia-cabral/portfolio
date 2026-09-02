@@ -335,7 +335,7 @@
     color: var(--rose-deep);
   }
 
-  /* =====================================================
+   /* =====================================================
      4b) PRÁTICA TÉCNICA
   ===================================================== */
   .pratica-head{
@@ -461,6 +461,134 @@
 
   @media (max-width: 640px){
     .pratica-lista{ grid-template-columns: 1fr; }
+  }
+
+  /* =====================================================
+     CERTIFICAÇÃO
+  ===================================================== */
+  .certificacao-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .certificacao-head h3{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin: 6px 0 0;
+  }
+
+  .certificacao-head .contagem{
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .certificacao-lista{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+.certificacao-item{
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--pill-border);
+  box-shadow: 0 14px 32px -24px rgba(28,26,22,0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.certificacao-item:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -22px rgba(28,26,22,0.45);
+}
+
+.certificacao-imagem{
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--rose-soft), var(--bg-card));
+  overflow: hidden;
+}
+
+.certificacao-imagem svg,
+.certificacao-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+  .certificacao-corpo-wrap{
+    padding: 22px 26px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+  }
+
+  .certificacao-item .categoria{
+    display: inline-block;
+    width: fit-content;
+    font-size: 0.66rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--rose-deep);
+    background: var(--rose-soft);
+    padding: 5px 11px;
+    border-radius: var(--radius-pill);
+  }
+
+  .certificacao-item .corpo h4{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin: 0 0 6px;
+  }
+
+  .certificacao-item .corpo p{
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .certificacao-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .certificacao-tags span{
+    font-size: 0.75rem;
+    background: var(--rose-soft);
+    color: var(--rose-deep);
+    border-radius: var(--radius-pill);
+    padding: 5px 12px;
+    font-weight: 500;
+  }
+
+  .certificacao-item .link{
+    font-size: 0.85rem;
+    color: var(--rose-deep);
+    font-weight: 500;
+  }
+
+  .certificacao-item .link:hover{ opacity: 0.7; }
+
+  @media (max-width: 640px){
+    .certificacao-lista{ grid-template-columns: 1fr; }
   }
 
   /* =====================================================
@@ -669,8 +797,8 @@
     <div>
       <h1>Ana Letícia Cabral do Rosário</h1>
       <div class="cargo">
-        <span class="cargo-rosa">Analista de Dados</span>
-        <span class="cargo-rosa">Graduanda em Ciência da Computação</span>
+        <span class="tag-bb">Analista de Dados</span>
+        <span class="tag-bb">Ciência da Computação · UCB</span>
         <span class="tag-bb">Estágio Banco do Brasil · 2025–2026</span>
       </div>
     </div>
@@ -678,7 +806,7 @@
     <nav class="nav-pills">
       <a href="#projetos">Projetos</a>
       <a href="#pratica">Prática técnica</a>
-      <a href="#sobre">Sobre</a>
+      <a href="#certificacoes">Certificações</a>
       <a href="#meutrabalho">Avaliação de desempenho</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -691,7 +819,15 @@
     <section class="hero" id="topo">
       <div class="eyebrow">PORTFÓLIO · DADOS</div>
       <h2>Transformando dados em decisões,<br>uma análise por vez.</h2>
-      <p>Uma coleção dos projetos que construí durante meus estudos em análise de dados e ciência de dados.</p>
+      <p>Meu nome é <strong>Ana Letícia Cabral do Rosário</strong>, nasci em novembro de 2004 e moro em Brasília, Distrito Federal. Sou apaixonada pela área de dados, por escrever códigos e por trabalhar com números com o objetivo de investigar e solucionar problemas reais.</p>
+
+      <p>Meu interesse pela área surgiu a partir dos meus primeiros estudos em bancos de dados, iniciados com as aulas do professor Gustavo Guanabara, como forma de complementar os conhecimentos adquiridos durante minha graduação em <strong>Ciência da Computação</strong>.</p>
+
+      <p>Em 2025, iniciei meu estágio no Edifício Banco do Brasil, em Brasília, integrando o time de <strong>Risco Social, Ambiental e Climático da ASG</strong>. Essa experiência foi fundamental para conhecer o mercado de trabalho, desenvolver minhas habilidades profissionais e, principalmente, colocar em prática conhecimentos adquiridos ao longo da minha formação.</p>
+
+      <p>Durante o estágio, desenvolvi competências técnicas e interpessoais, incluindo <strong>comunicação e participação ativa em reuniões diárias, construção e manutenção de dashboards analíticos no Microsoft Power BI, elaboração de queries para bancos de dados PostgreSQL e IBM DB2, além do uso de planilhas para organização e análise de informações</strong>.</p>
+
+      <p>Atualmente, sigo me aprofundando constantemente em dois campos que me fascinam: <strong>Análise de Dados</strong> e <strong>Ciência de Dados</strong>. Busco transformar cada novo conhecimento em prática, desenvolvendo minha capacidade de analisar informações, escrever código e utilizar dados para compreender problemas e encontrar soluções.</p>
 
       <div class="divisor-wrap">
         <svg class="divisor" width="340" height="110" viewBox="0 0 340 110" fill="none">
@@ -743,14 +879,20 @@
       </div>
     </section>
 
-    <!-- ---------- SOBRE ---------- -->
-    <section class="sobre" id="sobre">
-      <div class="eyebrow">SOBRE</div>
-      <h3>Analista de dados apaixonada por estudar constantemente e por resolver problemas com números e código.</h3>
-      <p>Tenho conhecimento em SQL, Power BI, Excel e Python para análise e tratamento de dados. Busco sempre transformar dados em informações claras, organizadas e úteis para o negócio.</p>
-      <p>Sou comprometida com prazos, comunicação clara e entrega de soluções que gerem valor para o cliente.</p>
+    <!-- ---------- CERTIFICAÇÕES ---------- -->
+    <section id="certificacoes">
+      <div class="eyebrow">Formações</div>
+      <div class="certificacao-head">
+        <h3>Certificações</h3>
+        <div class="contagem" id="contagem-certificacao"></div>
+      </div>
+
+      <div class="certificacao-lista" id="certificacao-lista">
+        <!-- os itens são gerados pelo JavaScript a partir da lista CERTIFICACAO -->
+      </div>
     </section>
-  
+    
+
      <!-- ---------- O QUE DIZEM SOBRE O MEU TRABALHO ---------- -->
     <section class="meutrabalho" id="meutrabalho">
       <div class="eyebrow">O QUE DIZEM SOBRE O MEU TRABALHO</div>
@@ -798,7 +940,7 @@
   ===================================================== */
   const PROJETOS = [
     {
-      categoria: "ANÁLISE DE DADOS",
+      categoria: "DASHBOARD",
       ano: "Agosto, 2026",
       titulo: "Mortalidade Evitável no Brasil",
       link: "https://app.powerbi.com/view?r=eyJrIjoiZmVkYWY3NjktMDNhYi00YmEyLTk5MmYtMjY5NmU0NmZhYzIxIiwidCI6Ijk0MDBmNTdkLWIwY2EtNGQzOC1iNzA5LWYxYTA3ZDIyMTY4NyJ9",
@@ -808,7 +950,7 @@
       posicaoImagem: "cover"
     },
     {
-      categoria: "ANÁLISE DE DADOS",
+      categoria: "ESTUDO DE CASO",
       ano: "Maio, 2026",
       titulo: "Como uma empresa de bem-estar pode ser inteligente?",
       link: "https://www.kaggle.com/code/ninha0911/h-bitos-de-usu-rios-fitbit",
@@ -819,7 +961,7 @@
       corFundo: "#fdf3e0"
     },
     {
-      categoria: "ANÁLISE DE DADOS",
+      categoria: "DASHBOARD",
       ano: "Maio, 2026",
       titulo: "Popularidade de Músicas no Spotify",
       link: "https://public.tableau.com/app/profile/ana.let.cia.cabral.do.ros.rio/viz/AnlisedepopularidadedemsicasnoSpotify/Painel1",
@@ -829,7 +971,7 @@
       posicaoImagem: "cover"
     },
     {
-      categoria: "ANÁLISE DE DADOS",
+      categoria: "DASHBOARD",
       ano: "Fevereiro, 2026",
       titulo: "Relatório de Vendas — Chaska Café",
       link: "https://app.powerbi.com/view?r=eyJrIjoiOTE3YjI5NGItYTg4Yi00ZWI1LWI5MWEtZWUxNDk3ZDYwOWE2IiwidCI6IjQ5Nzc0MTY5LTBmZWMtNDdmNy04YTlhLTE0YzIzMGI1MTIyMiJ9",
@@ -858,15 +1000,21 @@
       tags: ["Jupyter Notebook", "NumPy", "Pandas"],
       link: "https://github.com/ana-leticia-cabral/estudos-python"
     },
+  ];
+
+   /* =====================================================
+     LISTA DE CERTIFICACOES
+  ===================================================== */
+  const CERTIFICACAO = [
     {
-      categoria: "Estatística",
-      titulo: "Estatística básica",
-      descricao: "Repositório com implementações práticas e fundamentos teóricos de estatística básica aplicados à Análise e Ciência de Dados. Reúne conceitos de estatística descritiva, probabilidade e inferência com o objetivo de centralizar esse material como referência para revisões futuras e suporte na estruturação de análises sólidas.",
-      tags: ["Estatística descritiva", "Probabilidade"],
-      link: "https://github.com/ana-leticia-cabral/estudos-estatistica"
+      categoria: "Formação plena",
+      titulo: "Formação plena em Análise e Ciência de dados [2026] — Udemy",
+      descricao: "Data Science e Inteligência Artificial c/ Python, Excel e R, básico ao avançado.",
+      tags: ["Análise descritiva", "Análise inferencial", "Python", "R", "Machine Learning"],
+      link: "https://github.com/ana-leticia-cabral/formacao-plena-analise-ciencia-dados-2026"
     },
     {
-      categoria: "Certificação",
+      categoria: "Certificação profissional",
       titulo: "Google Data Analytics — Coursera",
       descricao: "Formação cobrindo os fundamentos da análise de dados, englobando do tratamento ao storytelling para tomada de decisão. Certificação obtida em maio de 2026 por meio de uma bolsa de estudos concedida em parceria com a agência de estágio, como marco de início das minhas atividades na sede do Banco do Brasil (Brasília).",
       tags: ["Google Sheets", "Google BigQuery", "Python", "Tableau"],
@@ -917,6 +1065,50 @@
     listaPratica.appendChild(item);
   });
 
+
+  const listaCertificacao = document.getElementById("certificacao-lista");
+  document.getElementById("contagem-certificacao").textContent =
+    CERTIFICACAO.length + (CERTIFICACAO.length === 1 ? " certificação" : " certificações");
+
+  CERTIFICACAO.forEach(c => {
+    const item = document.createElement("article");
+    item.className = "certificacao-item";
+
+    item.innerHTML = `
+      <div class="certificacao-imagem">
+        <svg width="110" height="110" viewBox="0 0 110 110" fill="none" aria-hidden="true">
+          <rect x="20" y="12" width="70" height="78" rx="8"
+                stroke="var(--rose-deep)" stroke-width="2"/>
+          <path d="M32 32H78M32 46H78M32 60H64"
+                stroke="var(--rose-deep)" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="72" cy="76" r="13"
+                  fill="var(--rose-soft)" stroke="var(--rose-deep)" stroke-width="2"/>
+          <path d="M67 76L70 79L77 71"
+                stroke="var(--rose-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M42 90L38 102L47 98L55 104L59 91"
+                fill="var(--rose-soft)" stroke="var(--rose-deep)" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="certificacao-corpo-wrap">
+        <div class="categoria">${c.categoria}</div>
+
+        <div class="corpo">
+          <h4>${c.titulo}</h4>
+          <p>${c.descricao}</p>
+        </div>
+
+        <div class="certificacao-tags">
+          ${c.tags.map(t => `<span>${t}</span>`).join("")}
+        </div>
+
+        ${c.link ? `<a class="link" href="${c.link}" target="_blank" rel="noopener">Ver certificado →</a>` : ""}
+      </div>
+    `;
+
+    listaCertificacao.appendChild(item);
+  });
+
   const grid = document.getElementById("projetos-grid");
   document.getElementById("contagem-projetos").textContent = PROJETOS.length + " projetos";
 
@@ -952,4 +1144,3 @@
 
 </body>
 </html>
-
