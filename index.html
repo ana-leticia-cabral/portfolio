@@ -579,8 +579,7 @@
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
   overflow: hidden;
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  flex-direction: column;
 }
 
 .certificacao-item:hover{
@@ -589,31 +588,6 @@
   box-shadow: 0 26px 44px -20px var(--rose-shadow), 0 10px 20px -14px rgba(28,26,22,0.25);
 }
 
-.certificacao-imagem{
-  width: 168px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--rose-shadow);
-  overflow: hidden;
-  position: relative;
-}
-
-.certificacao-imagem::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: inset -18px 0 24px -22px rgba(28,26,22,0.35);
-  pointer-events: none;
-}
-
-.certificacao-imagem svg,
-.certificacao-imagem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
   .certificacao-corpo-wrap{
     padding: 24px 30px;
     display: flex;
@@ -624,10 +598,12 @@
     min-width: 0;
   }
 
-  @media (max-width: 640px){
-    .certificacao-item{ flex-direction: column; }
-    .certificacao-imagem{ width: 100%; height: 140px; }
-    .certificacao-imagem::after{ box-shadow: inset 0 -18px 24px -22px rgba(28,26,22,0.35); }
+  .certificacao-item .topo-linha{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   .certificacao-item .categoria{
@@ -641,6 +617,14 @@
     background: var(--rose-soft);
     padding: 5px 11px;
     border-radius: var(--radius-pill);
+  }
+
+  .certificacao-item .tag-ano{
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
   }
 
   .certificacao-item .corpo h4{
@@ -921,9 +905,9 @@
     <div>
       <h1>Ana Letícia Cabral do Rosário</h1>
       <div class="cargo">
-        <span class="tag-bb">Analista de Dados</span>
-        <span class="tag-bb">Ciência da Computação · UCB</span>
-        <span class="tag-bb">Estágio Banco do Brasil · 2025–2026</span>
+        <span class="cargo-rosa">Analista de Dados</span>
+        <span class="cargo-rosa">Ciência da Computação UCB</span>
+        <span class="tag-bb">Estágio Banco do Brasil · 2025 – 2026</span>
       </div>
     </div>
 
@@ -943,19 +927,7 @@
     <section class="hero" id="topo">
       <div class="eyebrow">PORTFÓLIO · DADOS</div>
       <h2>Transformando dados em decisões,<br>uma análise por vez.</h2>
-   <div style="font-size: 6px; text-align: justify;">
-      <p>Meu nome é <strong>Ana Letícia Cabral do Rosário</strong>, nasci em novembro de 2004 e moro em Brasília, Distrito Federal. Sou apaixonada pela área de dados, por escrever códigos e por trabalhar com números com o objetivo de investigar e solucionar problemas reais.</p>
-
-      <p>Meu interesse pela área surgiu a partir dos meus primeiros estudos em bancos de dados, iniciados com as aulas do professor Gustavo Guanabara, como forma de complementar os conhecimentos adquiridos durante minha graduação em <strong>Ciência da Computação</strong>.</p>
-
-      <p>Em 2025, iniciei meu estágio no Edifício Banco do Brasil, em Brasília, integrando o time de <strong>Risco Social, Ambiental e Climático da ASG</strong>. Essa experiência foi fundamental para conhecer o mercado de trabalho, desenvolver minhas habilidades profissionais e, principalmente, colocar em prática conhecimentos adquiridos ao longo da minha formação.</p>
-
-      <p>Durante o estágio, desenvolvi competências técnicas e interpessoais, incluindo <strong>comunicação e participação ativa em reuniões diárias, construção e manutenção de dashboards analíticos no Microsoft Power BI, elaboração de queries para bancos de dados PostgreSQL e IBM DB2, além do uso de planilhas para organização e análise de informações</strong>.</p>
-
-      <p>Atualmente, sigo me aprofundando constantemente em dois campos que me fascinam: <strong>Análise de Dados</strong> e <strong>Ciência de Dados</strong>. Busco transformar cada novo conhecimento em prática, desenvolvendo minha capacidade de analisar informações, escrever código e utilizar dados para compreender problemas e encontrar soluções.</p>
-   </div>
-
-      <div class="divisor-wrap">
+    <div class="divisor-wrap">
         <svg class="divisor" width="400" height="200" viewBox="0 0 340 110" fill="none">
           <rect x="0"   y="72" width="34" height="38" rx="8" fill="#f6e4e6"/>
           <rect x="44"  y="54" width="34" height="56" rx="8" fill="#f1d3d7"/>
@@ -977,6 +949,24 @@
           <circle cx="323" cy="72" r="2.5" fill="#b5677a"/>
         </svg>
       </div>
+
+
+
+      <div style="font-size: 6px; text-align: justify;">
+        <p>Meu nome é <strong>Ana Letícia Cabral do Rosário</strong>, nasci em novembro de 2004 e moro em Brasília, Distrito Federal. Sou apaixonada pela área de dados, por escrever códigos e por trabalhar com números com o objetivo de investigar e solucionar problemas reais.</p>
+
+        <p>Meu interesse pela área surgiu a partir dos meus primeiros estudos em bancos de dados, iniciados com as aulas do professor Gustavo Guanabara, como forma de complementar os conhecimentos adquiridos durante minha graduação em <strong>Ciência da Computação</strong>.</p>
+
+        <p>Em 2025, iniciei meu estágio no Edifício Banco do Brasil, em Brasília, integrando o time de <strong>Risco Social, Ambiental e Climático da ASG</strong>. Essa experiência foi fundamental para conhecer o mercado de trabalho, desenvolver minhas habilidades profissionais e, principalmente, colocar em prática conhecimentos adquiridos ao longo da minha formação.</p>
+
+        <p>Durante o estágio, desenvolvi competências técnicas e interpessoais, incluindo <strong>comunicação e participação ativa em reuniões diárias, construção e manutenção de dashboards analíticos no Microsoft Power BI, elaboração de queries para bancos de dados PostgreSQL e IBM DB2, além do uso de planilhas para organização e análise de informações</strong>.</p>
+
+       <p>Atualmente, sigo me aprofundando constantemente em dois campos que me fascinam: <strong>Análise de Dados</strong> e <strong>Ciência de Dados</strong>. Busco transformar cada novo conhecimento em prática, desenvolvendo minha capacidade de analisar informações, escrever código e utilizar dados para compreender problemas e encontrar soluções.</p>
+   </div>
+
+ 
+
+
     </section>
 
     <!-- ---------- CERTIFICAÇÕES ---------- -->
@@ -1134,17 +1124,19 @@
   ===================================================== */
   const CERTIFICACAO = [
     {
-      categoria: "Formação Plena — 2026 ",
+      categoria: "Formação Plena",
+      ano: "Em andamento",
       titulo: "Análise e Ciência de dados — Udemy",
-      descricao: "Data Science e Inteligência Artificial c/ Python, Excel e R, básico ao avançado.",
-      tags: ["Análise descritiva", "Análise inferencial", "Python", "R", "Machine Learning"],
+      descricao: "Formação em Data Science e IA (Python, R e Excel). Foco na consolidação do ciclo de dados (coleta, tratamento, análise e sumarização) e no aprendizado de Machine Learning e Inteligência Artificial para desenvolvimento de análises preditivas.",
+      tags: ["Estatística", "Probabilidade", "Excel", "Python","R", "Machine Learning"],
       link: "https://github.com/ana-leticia-cabral/formacao-plena-analise-ciencia-dados-2026"
     },
     {
-      categoria: "Certificação profissional — (2025/2026)",
+      categoria: "Certificação profissional",
+      ano: "2025-2026",
       titulo: "Google Data Analytics — Coursera",
       descricao: "Formação cobrindo os fundamentos da análise de dados, englobando do tratamento ao storytelling para tomada de decisão. Certificação obtida em maio de 2026 por meio de uma bolsa de estudos concedida em parceria com a agência de estágio, como marco de início das minhas atividades na sede do Banco do Brasil (Brasília).",
-      tags: ["Google Sheets", "Google BigQuery", "Python", "Tableau"],
+      tags: ["Google Sheets", "Google BigQuery","SQL", "Python", "Tableau"],
       link: "https://github.com/ana-leticia-cabral/certificado-profissional-de-analise-de-dados-do-google"
     },
   ];
@@ -1202,47 +1194,11 @@
     item.className = "certificacao-item";
 
     item.innerHTML = `
-      <div class="certificacao-imagem">
-        <svg width="280" height="150" viewBox="0 0 280 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-         <!-- Fundo do Certificado -->
-         <rect x="2" y="2" width="276" height="146" rx="4" fill="#ffffff" stroke="var(--rose-deep)" stroke-width="2"/>
-         <rect x="6" y="6" width="268" height="138" rx="2" fill="none" stroke="var(--rose-deep)" stroke-width="0.75" stroke-dasharray="2 2"/>
-
-         <!-- Textos do Certificado -->
-         <text x="140" y="28" font-family="'Helvetica Neue', sans-serif" font-size="8" font-weight="600" letter-spacing="1.5" fill="var(--rose-deep)" text-anchor="middle">CERTIFICADO DE CONCLUSÃO</text>
-  
-         <text x="140" y="48" font-family="'Georgia', serif" font-size="13" font-weight="bold" font-style="italic" fill="var(--rose-deep)" text-anchor="middle">${c.titulo}</text>
-  
-         <line x1="80" y1="56" x2="200" y2="56" stroke="var(--rose-soft)" stroke-width="1"/>
-  
-         <text x="140" y="68" font-family="'Helvetica Neue', sans-serif" font-size="7" fill="#666666" text-anchor="middle">concedido a</text>
-  
-         <text x="140" y="84" font-family="'Georgia', serif" font-size="11" font-style="italic" fill="#222222" text-anchor="middle">Ana Letícia Cabral</text>
-
-         <!-- Linhas de Assinatura -->
-         <line x1="40" y1="118" x2="100" y2="118" stroke="var(--rose-deep)" stroke-width="0.75"/>
-         <text x="70" y="126" font-family="'Helvetica Neue', sans-serif" font-size="6" fill="#888888" text-anchor="middle">Instituição</text>
-
-         <line x1="180" y1="118" x2="240" y2="118" stroke="var(--rose-deep)" stroke-width="0.75"/>
-         <text x="210" y="126" font-family="'Helvetica Neue', sans-serif" font-size="6" fill="#888888" text-anchor="middle">Instrutor</text>
-
-         <!-- Selo / Medalha no Canto Inferior Direito -->
-         <g transform="translate(225, 98)">
-         <!-- Fitas da Medalha -->
-         <path d="M-6 8 L-10 22 L-2 18 L2 22 L0 8" fill="var(--rose-soft)" stroke="var(--rose-deep)" stroke-width="0.75"/>
-         <path d="M6 8 L2 22 L10 18 L14 22 L10 8" fill="var(--rose-soft)" stroke="var(--rose-deep)" stroke-width="0.75"/>
-         <!-- Círculo da Medalha -->
-         <circle cx="2" cy="2" r="10" fill="var(--rose-soft)" stroke="var(--rose-deep)" stroke-width="1.5"/>
-         <!-- Estrela Interna -->
-        <path d="M2 -3 L3.2 -0.5 L6 0 L4 2 L4.6 4.8 L2 3.4 L-0.6 4.8 L0 2 L-2 0 L0.8 -0.5 Z" fill="var(--rose-deep)"/>
-  </g>
-</svg>
-</svg>
-        </svg>
-      </div>
-
       <div class="certificacao-corpo-wrap">
-        <div class="categoria">${c.categoria}</div>
+        <div class="topo-linha">
+          <div class="categoria">${c.categoria}</div>
+          ${c.ano ? `<span class="tag-ano">${c.ano}</span>` : ""}
+        </div>
 
         <div class="corpo">
           <h4>${c.titulo}</h4>
