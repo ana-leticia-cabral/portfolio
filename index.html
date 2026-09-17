@@ -40,15 +40,47 @@
 
   body{
     margin:0;
-    background:
-      radial-gradient(circle at 1px 1px, rgba(28,26,22,0.045) 1px, transparent 0) 0 0/26px 26px,
-      var(--bg);
+    min-height: 100vh;
+    position: relative;
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(28,26,22,0.045) 1px, transparent 0),
+      radial-gradient(900px 720px at 96% -8%, rgba(181,103,122,0.38), transparent 68%),
+      radial-gradient(780px 640px at -12% 12%, rgba(244,221,224,0.9), transparent 62%),
+      radial-gradient(840px 700px at 6% 112%, rgba(156,84,96,0.30), transparent 68%);
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 26px 26px, auto, auto, auto;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+    background-attachment: scroll, fixed, fixed, fixed;
     color: var(--ink);
     font-family: var(--font-body);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+
+  .fundo-decorativo{
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .fundo-decorativo svg{
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 780px;
+    height: 780px;
+    opacity: 0.22;
+  }
+
+  @media (max-width: 860px){
+    .fundo-decorativo svg{ width: 480px; height: 480px; opacity: 0.18; }
+  }
+
+  .layout{ position: relative; z-index: 1; }
 
   a{ color: inherit; text-decoration: none; }
 
@@ -117,13 +149,55 @@
     font-weight: 500;
   }
 
-  .sidebar .cargo .tag-bb{
+  .sidebar-grupo{
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sidebar-grupo-label{
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--eyebrow);
+    font-weight: 600;
+  }
+
+  .sidebar-lista{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sidebar-lista li{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .sidebar-lista-titulo{
+    font-size: 0.9rem;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .sidebar-lista-info{
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .sidebar-grupo .tag-bb{
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: 4px;
-    padding: 5px 13px;
     width: fit-content;
+    padding: 5px 13px;
     border-radius: var(--radius-pill);
     background: var(--rose-soft);
     color: var(--rose-deep);
@@ -136,26 +210,65 @@
   .nav-pills{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2px;
+    border-top: 1px solid var(--line);
+    padding-top: 6px;
   }
 
   .nav-pills a{
-    background: var(--bg-card);
-    border: 1px solid var(--pill-border);
-    border-radius: var(--radius-pill);
-    padding: 12px 20px;
-    font-size: 0.95rem;
+    position: relative;
+    padding: 11px 4px 11px 18px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
     letter-spacing: 0.01em;
-    box-shadow: 0 1px 0 rgba(28,26,22,0.02);
-    transition: background 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    border-bottom: 1px solid var(--line);
+    transition: color 0.25s var(--ease), padding-left 0.25s var(--ease);
   }
 
+  .nav-pills a::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 0;
+    background: var(--rose-deep);
+    transition: height 0.25s var(--ease);
+  }
+
+  .nav-pills a:last-child{ border-bottom: none; }
+
   .nav-pills a:hover{
-    background: #fffdfa;
-    border-color: var(--rose-soft);
+    color: var(--ink);
+    padding-left: 22px;
+  }
+
+  .nav-pills a.active{
     color: var(--rose-deep);
-    transform: translateX(3px);
-    box-shadow: 0 6px 16px -10px var(--rose-shadow);
+    font-weight: 500;
+    padding-left: 22px;
+  }
+
+  .nav-pills a.active::before{ height: 16px; }
+
+  /* =====================================================
+     NAVEGAÇÃO EM ABAS
+  ===================================================== */
+  .tab-panel{ display: none; }
+
+  .tab-panel.active{
+    display: block;
+    animation: painel-entra 0.45s var(--ease);
+  }
+
+  @keyframes painel-entra{
+    from{ opacity: 0; transform: translateY(10px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .tab-panel.active{ animation: none; }
   }
 
   .sidebar-footer{
@@ -167,7 +280,7 @@
   /* --- Main content --- */
   main{ min-width: 0; }
 
-  section{ margin-bottom: 104px; }
+  section{ margin-bottom: 48px; }
 
   /* =====================================================
      3) HERO
@@ -219,6 +332,59 @@
     font-size: 0.68rem;
     color: var(--ink-soft);
     margin-bottom: 4px;
+  }
+
+  .skills-destaque{
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .skills-lista{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-top: 18px;
+  }
+
+  .skill-item{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 4px 36px 4px 0;
+    margin-right: 36px;
+    border-right: 1px solid var(--line);
+  }
+
+  .skill-item:last-child{
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .skill-nome{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  .skill-uso{
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 640px){
+    .skill-item{
+      border-right: none;
+      padding-right: 0;
+      margin-right: 0;
+      width: 50%;
+      padding-bottom: 18px;
+    }
   }
 
   /* =====================================================
@@ -273,13 +439,12 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 14px 32px -26px rgba(28,26,22,0.3);
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+    transition: box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
   }
 
   .card:hover{
-    transform: translateY(-6px);
     border-color: var(--rose-soft);
-    box-shadow: 0 26px 44px -20px var(--rose-shadow), 0 10px 20px -14px rgba(28,26,22,0.25);
+    box-shadow: 0 18px 34px -22px var(--rose-shadow);
   }
 
   .card-imagem{
@@ -434,16 +599,15 @@
   border-radius: var(--radius-card);
   border: 1px solid var(--pill-border);
   box-shadow: 0 14px 32px -26px rgba(28,26,22,0.3);
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+  transition: box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
 .pratica-item:hover{
-  transform: translateY(-6px);
   border-color: var(--rose-soft);
-  box-shadow: 0 26px 44px -20px var(--rose-shadow), 0 10px 20px -14px rgba(28,26,22,0.25);
+  box-shadow: 0 18px 34px -22px var(--rose-shadow);
 }
 
 .pratica-imagem{
@@ -576,16 +740,15 @@
   border-radius: var(--radius-card);
   border: 1px solid var(--pill-border);
   box-shadow: 0 14px 32px -26px rgba(28,26,22,0.3);
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+  transition: box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
 .certificacao-item:hover{
-  transform: translateY(-4px);
   border-color: var(--rose-soft);
-  box-shadow: 0 26px 44px -20px var(--rose-shadow), 0 10px 20px -14px rgba(28,26,22,0.25);
+  box-shadow: 0 18px 34px -22px var(--rose-shadow);
 }
 
   .certificacao-corpo-wrap{
@@ -683,10 +846,13 @@
   }
 
   .sobre p{
-    max-width: 640px;
+    max-width: 620px;
     color: var(--ink-soft);
-    line-height: 1.65;
+    line-height: 1.75;
+    margin: 0 0 20px;
   }
+
+  .sobre p:last-child{ margin-bottom: 0; }
 
   .meutrabalho h3{
     font-family: var(--font-display);
@@ -702,20 +868,17 @@
   .depoimento-card{
     position: relative;
     max-width: 700px;
-    background:
-      radial-gradient(circle at 1px 1px, rgba(28,26,22,0.06) 1px, transparent 0) 0 0/14px 14px,
-      var(--bg-card);
+    background: var(--bg-card);
     border: 1px solid var(--pill-border);
+    border-left: 3px solid var(--rose-deep);
     border-radius: var(--radius-card);
     padding: 44px 40px 32px;
-    transform: rotate(-0.6deg);
-    box-shadow: 0 24px 48px -24px var(--rose-shadow), 0 10px 24px -18px rgba(28,26,22,0.3);
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    box-shadow: 0 20px 40px -28px rgba(28,26,22,0.28);
+    transition: box-shadow 0.35s var(--ease);
   }
 
   .depoimento-card:hover{
-    transform: rotate(0deg);
-    box-shadow: 0 28px 54px -22px var(--rose-shadow), 0 12px 26px -16px rgba(28,26,22,0.32);
+    box-shadow: 0 22px 42px -24px var(--rose-shadow);
   }
 
   .depoimento-aspas{
@@ -838,25 +1001,19 @@
     font-weight: 500;
     letter-spacing: 0.01em;
     border: 1px solid var(--pill-border);
-    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+    transition: box-shadow 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
     display: inline-block;
-  }
-
-  .btn:hover{
-    transform: translateY(-2px);
   }
 
   .btn-principal{
     background: var(--ink);
     color: #fff;
     border-color: var(--ink);
-    box-shadow: 0 10px 22px -14px rgba(28,26,22,0.5);
   }
 
   .btn-principal:hover{
     background: var(--rose-deep);
     border-color: var(--rose-deep);
-    box-shadow: 0 14px 26px -14px var(--rose-shadow);
   }
 
   .btn-secundario{
@@ -864,9 +1021,8 @@
   }
 
   .btn-secundario:hover{
-    border-color: var(--rose-soft);
+    border-color: var(--rose-deep);
     color: var(--rose-deep);
-    box-shadow: 0 10px 22px -16px var(--rose-shadow);
   }
 
   /* =====================================================
@@ -890,13 +1046,57 @@
       padding: 40px 20px;
     }
     .sidebar{ position: static; }
-    .nav-pills{ flex-direction: row; flex-wrap: wrap; }
+    .nav-pills{
+      flex-direction: row;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      border-top: none;
+      border-bottom: 1px solid var(--line);
+      padding-top: 0;
+      padding-bottom: 2px;
+    }
+    .nav-pills a{
+      white-space: nowrap;
+      padding: 10px 14px;
+      border-bottom: none;
+    }
+    .nav-pills a::before{
+      left: 50%;
+      top: auto;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+    }
+    .nav-pills a:hover,
+    .nav-pills a.active{ padding-left: 14px; }
+    .nav-pills a.active::before{ width: 60%; height: 2px; }
     .projetos-grid{ grid-template-columns: 1fr; }
   }
 
 </style>
 </head>
 <body>
+
+<div class="fundo-decorativo" aria-hidden="true">
+  <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="330" cy="70"  r="7"   fill="#9c5460"/>
+    <circle cx="280" cy="130" r="6"   fill="#b5677a"/>
+    <circle cx="350" cy="150" r="9"   fill="#e6b4bb"/>
+    <circle cx="230" cy="180" r="5.5" fill="#b5677a"/>
+    <circle cx="300" cy="210" r="7.5" fill="#e6b4bb"/>
+    <circle cx="370" cy="230" r="6"   fill="#9c5460"/>
+    <circle cx="200" cy="250" r="6.5" fill="#f1d3d7"/>
+    <circle cx="260" cy="280" r="9"   fill="#b5677a"/>
+    <circle cx="330" cy="300" r="5.5" fill="#e6b4bb"/>
+    <circle cx="150" cy="310" r="7"   fill="#f1d3d7"/>
+    <circle cx="220" cy="340" r="6"   fill="#9c5460"/>
+    <circle cx="290" cy="360" r="8"   fill="#e6b4bb"/>
+    <circle cx="100" cy="360" r="6"   fill="#f1d3d7"/>
+    <circle cx="170" cy="390" r="5.5" fill="#b5677a"/>
+    <path d="M 60 400 Q 200 260 380 60" fill="none" stroke="#9c5460" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/>
+  </svg>
+</div>
 
 <div class="layout">
 
@@ -906,12 +1106,31 @@
       <h1>Ana Letícia Cabral do Rosário</h1>
       <div class="cargo">
         <span class="cargo-rosa">Analista de Dados</span>
-        <span class="cargo-rosa">Ciência da Computação UCB</span>
-        <span class="tag-bb">Estágio Banco do Brasil · 2025 – 2026</span>
+      </div>
+
+      <div class="sidebar-grupo">
+        <span class="sidebar-grupo-label">Formação</span>
+        <ul class="sidebar-lista">
+          <li>
+            <span class="sidebar-lista-titulo">Ciência da Computação</span>
+            <span class="sidebar-lista-info">Universidade Católica de Brasília · 2024 – atual</span>
+          </li>
+          <li>
+            <span class="sidebar-lista-titulo">Google Data Analytics</span>
+            <span class="sidebar-lista-info">Google · 2025 – 2026</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-grupo">
+        <span class="sidebar-grupo-label">Experiência</span>
+        <span class="tag-bb">Estágio em Dados · Banco do Brasil · 2025 – 2026</span>
       </div>
     </div>
 
     <nav class="nav-pills">
+      <a href="#topo" class="active">Início</a>
+      <a href="#sobre">Sobre</a>
       <a href="#certificacoes">Certificações</a>
       <a href="#projetos">Projetos</a>
       <a href="#pratica">Prática técnica</a>
@@ -924,7 +1143,7 @@
   <main>
 
     <!-- ---------- HERO ---------- -->
-    <section class="hero" id="topo">
+    <section class="hero tab-panel" id="topo">
       <div class="eyebrow">PORTFÓLIO · DADOS</div>
       <h2>Transformando dados em decisões,<br>uma análise por vez.</h2>
     <div class="divisor-wrap">
@@ -948,29 +1167,72 @@
           <circle cx="281" cy="58" r="2.5" fill="#b5677a"/>
           <circle cx="323" cy="72" r="2.5" fill="#b5677a"/>
         </svg>
+
+        <svg class="divisor" width="260" height="200" viewBox="0 0 220 110" fill="none">
+          <line x1="6" y1="4" x2="6" y2="104" stroke="#dcd4c0" stroke-width="1"/>
+          <line x1="6" y1="104" x2="216" y2="104" stroke="#dcd4c0" stroke-width="1"/>
+          <line x1="10" y1="98" x2="212" y2="12" stroke="#b5677a" stroke-width="1.2" stroke-dasharray="3 5" stroke-linecap="round" opacity="0.55"/>
+          <circle cx="16"  cy="94" r="4"   fill="#f6e4e6"/>
+          <circle cx="30"  cy="80" r="5"   fill="#f1d3d7"/>
+          <circle cx="42"  cy="90" r="3.5" fill="#f1d3d7"/>
+          <circle cx="56"  cy="70" r="4.5" fill="#e6b4bb"/>
+          <circle cx="68"  cy="60" r="4"   fill="#e6b4bb"/>
+          <circle cx="80"  cy="76" r="3.5" fill="#f1d3d7"/>
+          <circle cx="94"  cy="50" r="5"   fill="#b5677a"/>
+          <circle cx="104" cy="58" r="4"   fill="#e6b4bb"/>
+          <circle cx="118" cy="40" r="4.5" fill="#b5677a"/>
+          <circle cx="130" cy="48" r="3.5" fill="#e6b4bb"/>
+          <circle cx="142" cy="30" r="5"   fill="#9c5460"/>
+          <circle cx="154" cy="38" r="4"   fill="#b5677a"/>
+          <circle cx="166" cy="22" r="4.5" fill="#9c5460"/>
+          <circle cx="178" cy="33" r="3.5" fill="#e6b4bb"/>
+          <circle cx="190" cy="18" r="4"   fill="#9c5460"/>
+          <circle cx="202" cy="26" r="3.5" fill="#b5677a"/>
+          <circle cx="210" cy="15" r="4.5" fill="#9c5460"/>
+        </svg>
       </div>
 
+      <div class="skills-destaque">
+        <div class="eyebrow">PRINCIPAIS FERRAMENTAS</div>
+        <div class="skills-lista">
+          <div class="skill-item">
+            <span class="skill-nome">Power BI</span>
+            <span class="skill-uso">Dashboards e visualização</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-nome">SQL</span>
+            <span class="skill-uso">Consultas e bancos de dados</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-nome">Python</span>
+            <span class="skill-uso">Análise e automação</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-nome">R</span>
+            <span class="skill-uso">Estatística</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ---------- SOBRE ---------- -->
+    <section class="sobre tab-panel" id="sobre">
+      <div class="eyebrow">SOBRE MIM</div>
+      <h3>Da curiosidade por números à rotina de uma analista.</h3>
 
-      <div style="font-size: 6px; text-align: justify;">
-        <p>Meu nome é <strong>Ana Letícia Cabral do Rosário</strong>, nasci em novembro de 2004 e moro em Brasília, Distrito Federal. Sou apaixonada pela área de dados, por escrever códigos e por trabalhar com números com o objetivo de investigar e solucionar problemas reais.</p>
+      <p>Meu nome é <strong>Ana Letícia Cabral do Rosário</strong>, nasci em novembro de 2004 e moro em Brasília, Distrito Federal. Sou apaixonada pela área de dados, por escrever códigos e por trabalhar com números com o objetivo de investigar e solucionar problemas reais.</p>
 
-        <p>Meu interesse pela área surgiu a partir dos meus primeiros estudos em bancos de dados, iniciados com as aulas do professor Gustavo Guanabara, como forma de complementar os conhecimentos adquiridos durante minha graduação em <strong>Ciência da Computação</strong>.</p>
+      <p>Meu interesse pela área surgiu a partir dos meus primeiros estudos em bancos de dados, iniciados com as aulas do professor Gustavo Guanabara, como forma de complementar os conhecimentos adquiridos durante minha graduação em <strong>Ciência da Computação</strong>.</p>
 
-        <p>Em 2025, iniciei meu estágio no Edifício Banco do Brasil, em Brasília, integrando o time de <strong>Risco Social, Ambiental e Climático da ASG</strong>. Essa experiência foi fundamental para conhecer o mercado de trabalho, desenvolver minhas habilidades profissionais e, principalmente, colocar em prática conhecimentos adquiridos ao longo da minha formação.</p>
+      <p>Em 2025, iniciei meu estágio no Edifício Banco do Brasil, em Brasília, integrando o time de <strong>Risco Social, Ambiental e Climático da ASG</strong>. Essa experiência foi fundamental para conhecer o mercado de trabalho, desenvolver minhas habilidades profissionais e, principalmente, colocar em prática conhecimentos adquiridos ao longo da minha formação.</p>
 
-        <p>Durante o estágio, desenvolvi competências técnicas e interpessoais, incluindo <strong>comunicação e participação ativa em reuniões diárias, construção e manutenção de dashboards analíticos no Microsoft Power BI, elaboração de queries para bancos de dados PostgreSQL e IBM DB2, além do uso de planilhas para organização e análise de informações</strong>.</p>
+      <p>Durante o estágio, desenvolvi competências técnicas e interpessoais, incluindo <strong>comunicação e participação ativa em reuniões diárias, construção e manutenção de dashboards analíticos no Microsoft Power BI, elaboração de queries para bancos de dados PostgreSQL e IBM DB2, além do uso de planilhas para organização e análise de informações</strong>.</p>
 
-       <p>Atualmente, sigo me aprofundando constantemente em dois campos que me fascinam: <strong>Análise de Dados</strong> e <strong>Ciência de Dados</strong>. Busco transformar cada novo conhecimento em prática, desenvolvendo minha capacidade de analisar informações, escrever código e utilizar dados para compreender problemas e encontrar soluções.</p>
-   </div>
-
- 
-
-
+      <p>Atualmente, sigo me aprofundando constantemente em dois campos que me fascinam: <strong>Análise de Dados</strong> e <strong>Ciência de Dados</strong>. Busco transformar cada novo conhecimento em prática, desenvolvendo minha capacidade de analisar informações, escrever código e utilizar dados para compreender problemas e encontrar soluções.</p>
     </section>
 
     <!-- ---------- CERTIFICAÇÕES ---------- -->
-    <section id="certificacoes">
+    <section class="tab-panel" id="certificacoes">
       <div class="eyebrow">Formações</div>
       <div class="certificacao-head">
         <h3>Certificações</h3>
@@ -984,7 +1246,7 @@
     
 
     <!-- ---------- PROJETOS ---------- -->
-    <section id="projetos">
+    <section class="tab-panel" id="projetos">
       <div class="eyebrow">TRABALHOS SELECIONADOS</div>
       <div class="projetos-head">
         <h3>Projetos</h3>
@@ -997,7 +1259,7 @@
     </section>
 
     <!-- ---------- PRÁTICA TÉCNICA ---------- -->
-    <section id="pratica">
+    <section class="tab-panel" id="pratica">
       <div class="eyebrow">ALÉM DOS PROJETOS</div>
       <div class="pratica-head">
         <h3>Prática técnica</h3>
@@ -1011,7 +1273,7 @@
 
     
      <!-- ---------- O QUE DIZEM SOBRE O MEU TRABALHO ---------- -->
-    <section class="meutrabalho" id="meutrabalho">
+    <section class="meutrabalho tab-panel" id="meutrabalho">
       <div class="eyebrow">O QUE DIZEM SOBRE O MEU TRABALHO</div>
       <h3>Avaliação de Desempenho: Estágio no Banco do Brasil (2025–2026)</h3>
 
@@ -1036,7 +1298,7 @@
     </section>
 
     <!-- ---------- CONTATO ---------- -->
-    <section class="contato" id="contato">
+    <section class="contato tab-panel" id="contato">
       <div class="eyebrow">CONTATO</div>
       <h3>Vamos conversar?</h3>
       <div class="contato-botoes">
@@ -1247,6 +1509,41 @@
     `;
     grid.appendChild(card);
   });
+
+  /* =====================================================
+     NAVEGAÇÃO EM ABAS
+  ===================================================== */
+  const linksNav = document.querySelectorAll(".nav-pills a");
+  const paineis = document.querySelectorAll(".tab-panel");
+
+  function mostrarAba(id, atualizarHash){
+    let existe = false;
+    paineis.forEach(p => {
+      const ativo = p.id === id;
+      p.classList.toggle("active", ativo);
+      if(ativo) existe = true;
+    });
+    if(!existe){
+      id = "topo";
+      document.getElementById("topo").classList.add("active");
+    }
+    linksNav.forEach(a => {
+      a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+    });
+    if(atualizarHash !== false && history.replaceState){
+      history.replaceState(null, "", "#" + id);
+    }
+    window.scrollTo({ top: 0, behavior: "instant" in document.documentElement.style ? "instant" : "auto" });
+  }
+
+  linksNav.forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      mostrarAba(a.getAttribute("href").slice(1));
+    });
+  });
+
+  mostrarAba((location.hash || "#topo").slice(1), false);
 </script>
 
 </body>
