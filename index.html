@@ -44,10 +44,10 @@
     position: relative;
     background-color: var(--bg);
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(28,26,22,0.045) 1px, transparent 0),
-      radial-gradient(900px 720px at 96% -8%, rgba(181,103,122,0.38), transparent 68%),
-      radial-gradient(780px 640px at -12% 12%, rgba(244,221,224,0.9), transparent 62%),
-      radial-gradient(840px 700px at 6% 112%, rgba(156,84,96,0.30), transparent 68%);
+      radial-gradient(circle at 1px 1px, rgba(28,26,22,0.03) 1px, transparent 0),
+      radial-gradient(900px 720px at 96% -8%, rgba(181,103,122,0.28), transparent 68%),
+      radial-gradient(780px 640px at -12% 12%, rgba(244,221,224,0.75), transparent 62%),
+      radial-gradient(840px 700px at 6% 112%, rgba(156,84,96,0.22), transparent 68%);
     background-repeat: repeat, no-repeat, no-repeat, no-repeat;
     background-size: 26px 26px, auto, auto, auto;
     background-position: 0 0, 0 0, 0 0, 0 0;
@@ -73,11 +73,11 @@
     right: -80px;
     width: 780px;
     height: 780px;
-    opacity: 0.22;
+    opacity: 0.15;
   }
 
   @media (max-width: 860px){
-    .fundo-decorativo svg{ width: 480px; height: 480px; opacity: 0.18; }
+    .fundo-decorativo svg{ width: 420px; height: 420px; opacity: 0.12; }
   }
 
   .layout{ position: relative; z-index: 1; }
@@ -1042,18 +1042,20 @@
   @media (max-width: 860px){
     .layout{
       grid-template-columns: 1fr;
-      gap: 40px;
-      padding: 40px 20px;
+      gap: 32px;
+      padding: 32px 20px 36px;
     }
-    .sidebar{ position: static; }
+    .sidebar{ position: static; gap: 20px; }
     .nav-pills{
       flex-direction: row;
       flex-wrap: nowrap;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border-top: none;
       border-bottom: 1px solid var(--line);
       padding-top: 0;
       padding-bottom: 2px;
+      scrollbar-width: thin;
     }
     .nav-pills a{
       white-space: nowrap;
@@ -1071,7 +1073,39 @@
     .nav-pills a:hover,
     .nav-pills a.active{ padding-left: 14px; }
     .nav-pills a.active::before{ width: 60%; height: 2px; }
+
+    section{ margin-bottom: 36px; }
+
     .projetos-grid{ grid-template-columns: 1fr; }
+    .pratica-lista{ grid-template-columns: 1fr; }
+
+    .divisor-wrap{ gap: 20px; margin-top: 32px; }
+    .divisor-wrap svg{ max-width: 100%; height: auto; }
+    .divisor-wrap svg:nth-child(2){ display: none; }
+
+    .skills-destaque{ margin-top: 40px; padding-top: 24px; }
+    .skill-item{ width: 50%; }
+
+    .certificacao-corpo-wrap{ padding: 20px 22px; }
+    .pratica-corpo-wrap{ padding: 18px 20px 20px; }
+    .depoimento-card{ padding: 40px 26px 26px; }
+  }
+
+  @media (max-width: 600px){
+    .layout{ padding: 24px 16px 32px; }
+    .sidebar h1{ font-size: 1.55rem; }
+    .hero h2{ margin: 10px 0 18px; }
+    .card-imagem{ height: 180px; }
+    .btn{ padding: 12px 20px; font-size: 0.9rem; }
+    .contato-botoes{ gap: 10px; }
+  }
+
+  @media (max-width: 420px){
+    .fundo-decorativo{ display: none; }
+    .skill-item{ width: 100%; border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 4px; }
+    .skill-item:last-child{ border-bottom: none; }
+    .certificacao-item .topo-linha{ gap: 8px; }
+    .card-corpo, .pratica-corpo-wrap, .certificacao-corpo-wrap{ padding-left: 18px; padding-right: 18px; }
   }
 
 </style>
@@ -1112,12 +1146,12 @@
         <span class="sidebar-grupo-label">Formação</span>
         <ul class="sidebar-lista">
           <li>
-            <span class="sidebar-lista-titulo">Ciência da Computação</span>
-            <span class="sidebar-lista-info">Universidade Católica de Brasília · 2024 – atual</span>
-          </li>
-          <li>
             <span class="sidebar-lista-titulo">Google Data Analytics</span>
             <span class="sidebar-lista-info">Google · 2025 – 2026</span>
+          </li>
+          <li>
+            <span class="sidebar-lista-titulo">Ciência da Computação</span>
+            <span class="sidebar-lista-info">Universidade Católica de Brasília · 2024 – atual</span>
           </li>
         </ul>
       </div>
@@ -1210,6 +1244,10 @@
           <div class="skill-item">
             <span class="skill-nome">R</span>
             <span class="skill-uso">Estatística</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-nome">Excel</span>
+            <span class="skill-uso">Planilhas e organização de dados</span>
           </div>
         </div>
       </div>
