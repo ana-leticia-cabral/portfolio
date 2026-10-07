@@ -1637,6 +1637,350 @@
   @media (prefers-reduced-motion: reduce){
     .b-val, .h-fill{ transition: none; }
   }
+
+  /* =====================================================
+     LAYOUT EM TELA ÚNICA (100% da altura da janela)
+     - Nada de rolagem na página: só o conteúdo de cada aba rola por dentro, se precisar.
+     - Menu sempre visível no desktop; no celular abre como painel logo abaixo do topo.
+     - O painel inicial é compactado para caber inteiro na tela.
+  ===================================================== */
+  html, body{ height: 100%; overflow: hidden; }
+
+  body{ min-height: 0; height: 100vh; height: 100dvh; }
+
+  .layout{
+    max-width: 1480px;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0 auto;
+    padding: 22px 28px;
+    gap: 36px;
+    grid-template-columns: 240px minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  /* --- Sidebar --- */
+  .sidebar{
+    position: relative;
+    top: auto;
+    height: 100%;
+    min-height: 0;
+    gap: 18px;
+    overflow-y: auto;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+
+  .sidebar-id h1{ font-size: 1.55rem; }
+  .sidebar-nav{ position: static; flex-shrink: 0; }
+
+  .sidebar-info{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .sidebar-info .sidebar-grupo{ margin-top: 0; }
+
+  /* --- Conteúdo --- */
+  main{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .filtros-ativos{ position: static; flex-shrink: 0; margin: 0 0 12px; }
+
+  .tab-panel{ margin-bottom: 0; }
+
+  .tab-panel.active{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+
+  /* --- Menu: sempre visível no desktop --- */
+  @media (min-width: 861px){
+    .nav-toggle{ display: none; }
+    .nav-pills{
+      display: flex;
+      position: static;
+      max-height: none;
+      overflow: visible;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      gap: 2px;
+      animation: none;
+    }
+    .nav-pills a{ padding: 9px 12px; }
+  }
+
+  /* =====================================================
+     PAINEL INICIAL — tudo na mesma tela
+  ===================================================== */
+  .hero.active{
+    display: grid;
+    grid-template-rows: auto auto minmax(300px, 1fr);
+    gap: 12px;
+    align-content: start;
+  }
+
+  .hero-head .hero-sub,
+  .hero .sub{ display: none; }
+
+  .hero h2{
+    font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+    line-height: 1.15;
+    margin: 6px 0 0;
+  }
+
+  @media (min-height: 820px){
+    .hero .sub{ display: block; font-size: .92rem; margin: 6px 0 0; max-width: none; }
+  }
+
+  /* KPIs em linha, compactos */
+  .kpis{
+    margin-top: 0;
+    gap: 12px;
+    grid-template-columns: minmax(0, .85fr) minmax(0, .85fr) minmax(0, 2.3fr);
+  }
+
+  .kpi{
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "v r" "v s";
+    column-gap: 14px;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 16px;
+  }
+  .kpi::after{ display: none; }
+  .kpi-valor{ grid-area: v; font-size: 2rem; margin: 0; }
+  .kpi-rotulo{ grid-area: r; align-self: end; }
+  .kpi-sub{ grid-area: s; align-self: start; padding: 0; font-size: .72rem; line-height: 1.3; }
+
+  .kpi-tec{
+    grid-template-columns: auto minmax(110px, .6fr) minmax(0, 2fr);
+    grid-template-areas: "v r t" "v s t";
+  }
+  .kpi-tools{ grid-area: t; padding: 0; gap: 5px; align-content: center; }
+  .kpi-tools span{ font-size: .66rem; padding: 2px 8px; }
+
+  /* Grade do painel: gráficos + projetos recentes */
+  .dash-grid{
+    margin: 0;
+    min-height: 0;
+    gap: 12px;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1.05fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "meses tipos dest"
+      "traj  traj  dest";
+  }
+  #card-meses{ grid-area: meses; }
+  #card-tipos{ grid-area: tipos; }
+  #card-traj{  grid-area: traj; }
+
+  .chart-card,
+  .chart-card.largo{
+    grid-column: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 14px 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  .chart-head{ margin-bottom: 8px; }
+  .chart-head h4{ font-size: 1rem; }
+  .chart-head .chart-sub{ font-size: .7rem; }
+
+  .bars{ flex: 1 1 0; height: auto; min-height: 110px; }
+
+  .hbars{ flex: 1 1 auto; justify-content: space-between; gap: 2px; margin-top: 0; }
+  .hrow{ padding: 4px 8px; gap: 4px; }
+  .h-track{ height: 8px; }
+  .hero .hbars-total{ margin: 2px 8px 0; }
+
+  /* Trajetória compacta */
+  .gantt{ gap: 5px; }
+  .g-row{ grid-template-columns: 210px minmax(0, 1fr); gap: 12px; }
+  .g-track{ height: 24px; }
+  .g-bar{ top: 4px; bottom: 4px; }
+  .g-nome{ font-size: .8rem; }
+  .g-nome small{ font-size: .68rem; }
+
+  /* Projetos recentes (coluna da direita) */
+  .destaques{
+    grid-area: dest;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--pill-border);
+    border-radius: var(--radius-card);
+    padding: 14px 16px;
+    box-shadow: 0 14px 32px -26px rgba(28,26,22,0.3);
+  }
+  .destaques-head{ padding-bottom: 10px; margin-bottom: 10px; flex-shrink: 0; }
+  .destaques-head h3{ font-size: 1.15rem; }
+  .dest-lista{
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    gap: 8px;
+    scrollbar-width: thin;
+  }
+  .dest{
+    flex-shrink: 0;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 12px;
+    padding: 8px;
+    border-radius: 14px;
+  }
+  .dest-thumb{ width: 44px; height: 44px; border-radius: 10px; }
+  .dest-meta{ font-size: .6rem; }
+  .dest h4{ font-size: .92rem; margin: 1px 0 0; }
+  .dest .tags{ display: none; }
+
+  /* --- Telas médias (tablet deitado): sem a coluna de projetos --- */
+  @media (min-width: 861px) and (max-width: 1180px){
+    .layout{ gap: 24px; padding: 18px 20px; grid-template-columns: 210px minmax(0, 1fr); }
+    .sidebar-id h1{ font-size: 1.35rem; }
+    .dash-grid{
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      grid-template-areas: "meses tipos" "traj traj";
+    }
+    .destaques{ display: none; }
+  }
+
+  /* --- Telas baixas (notebooks pequenos): aperta tudo um pouco --- */
+  @media (min-width: 861px) and (max-height: 720px){
+    .layout{ padding: 14px 24px; }
+    .sidebar{ gap: 12px; }
+    .sidebar-info{ gap: 10px; padding-top: 10px; }
+    .nav-pills a{ padding: 6px 12px; }
+    .hero.active{ gap: 10px; }
+    .dash-grid{ gap: 10px; }
+    .kpi{ padding: 8px 14px; }
+    .kpi-valor{ font-size: 1.7rem; }
+    .chart-card{ padding: 12px 14px; }
+    .chart-head .chart-sub{ display: none; }
+    .hrow{ padding: 3px 8px; }
+    .g-track{ height: 20px; }
+    .g-bar{ top: 3px; bottom: 3px; }
+    .dest{ grid-template-columns: minmax(0, 1fr); padding: 6px 10px; }
+    .dest-thumb{ display: none; }
+    .dest h4{ font-size: .86rem; }
+    .dest-lista{ gap: 6px; }
+  }
+
+  /* =====================================================
+     CELULAR / TABLET EM PÉ
+  ===================================================== */
+  @media (max-width: 860px){
+    .layout{
+      display: flex;
+      flex-direction: column;
+      padding: 10px 12px;
+      gap: 10px;
+    }
+
+    /* topo compacto: nome + botão de menu */
+    .sidebar{
+      position: relative;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: auto;
+      flex-shrink: 0;
+      gap: 10px;
+      overflow: visible;
+      padding: 0;
+    }
+    .sidebar-id{ min-width: 0; flex: 1; }
+    .sidebar-id h1{ font-size: 1rem; line-height: 1.2; }
+    .sidebar .cargo{ margin-top: 2px; font-size: .76rem; }
+    .sidebar-info{ display: none; }
+
+    .sidebar-nav{ flex-shrink: 0; }
+    .nav-toggle{ width: auto; padding: 10px 14px; gap: 8px; }
+    .nav-toggle-eyebrow{ display: none; }
+    .nav-toggle-atual{ font-size: .95rem; max-width: 130px; }
+
+    /* painel do menu: logo abaixo do topo, todos os itens visíveis */
+    .nav-pills{
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      max-height: calc(100vh - 90px);
+      max-height: calc(100dvh - 90px);
+      z-index: 60;
+    }
+    .nav-pills a{ padding: 12px; }
+
+    main{ flex: 1 1 auto; height: auto; }
+    .tab-panel.active{ padding-right: 0; }
+
+    .hero.active{ grid-template-rows: auto auto auto; gap: 10px; }
+    .hero h2{ font-size: 1.25rem; }
+    .hero .sub{ display: none; }
+    .hero-head .eyebrow{ display: none; }
+    .gantt{ gap: 3px; }
+
+    .kpis{ grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .kpi-tec{ grid-column: auto; }
+    .kpi,
+    .kpi-tec{
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "v" "r";
+      padding: 8px 12px;
+      row-gap: 0;
+    }
+    .kpi-valor{ font-size: 1.6rem; }
+    .kpi-sub, .kpi-tools{ display: none; }
+
+    .dash-grid{
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: auto auto auto;
+      grid-template-areas: "meses" "tipos" "traj";
+      gap: 10px;
+      min-height: auto;
+    }
+    .destaques{ display: none; }
+
+    .chart-card{ overflow: visible; min-height: auto; padding: 12px 14px; }
+    .chart-head .chart-sub{ display: none; }
+    .bars{ flex: none; height: 110px; }
+    .hbars{ flex: none; }
+    .hero .hbars-total{ display: none; }
+    .hrow{ padding: 3px 6px; }
+    .g-row{ grid-template-columns: 112px minmax(0, 1fr); gap: 8px; }
+    .g-nome small{ display: none; }
+  }
+
+  /* celular baixo: a trajetória sai do painel para o resto caber */
+  @media (max-width: 860px) and (max-height: 800px){
+    #card-traj{ display: none; }
+  }
+
+  @media (max-width: 860px) and (max-height: 600px){
+    .hero-head .eyebrow{ display: none; }
+    .bars{ height: 110px; }
+  }
 </style>
 </head>
 <body>
@@ -1665,29 +2009,10 @@
 
   <!-- ================= SIDEBAR ================= -->
   <aside class="sidebar">
-    <div>
+    <div class="sidebar-id">
       <h1>Ana Letícia Cabral do Rosário</h1>
       <div class="cargo">
         <span class="cargo-rosa">Analista de Dados</span>
-      </div>
-
-      <div class="sidebar-grupo">
-        <span class="sidebar-grupo-label">Formação</span>
-        <ul class="sidebar-lista">
-          <li>
-            <span class="sidebar-lista-titulo">Google Data Analytics</span>
-            <span class="sidebar-lista-info">Google · 2025 – 2026</span>
-          </li>
-          <li>
-            <span class="sidebar-lista-titulo">Ciência da Computação</span>
-            <span class="sidebar-lista-info">Universidade Católica de Brasília · 2024 – atual</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="sidebar-grupo">
-        <span class="sidebar-grupo-label">Experiência</span>
-        <span class="tag-bb">Estágio em Dados · Banco do Brasil · 2025 – 2026</span>
       </div>
     </div>
 
@@ -1709,6 +2034,27 @@
         <a href="#contato"><span class="nav-pill-num">07</span><span>Contato</span></a>
       </nav>
     </div>
+
+    <div class="sidebar-info">
+      <div class="sidebar-grupo">
+        <span class="sidebar-grupo-label">Formação</span>
+        <ul class="sidebar-lista">
+          <li>
+            <span class="sidebar-lista-titulo">Google Data Analytics</span>
+            <span class="sidebar-lista-info">Google · 2025 – 2026</span>
+          </li>
+          <li>
+            <span class="sidebar-lista-titulo">Ciência da Computação</span>
+            <span class="sidebar-lista-info">Universidade Católica de Brasília · 2024 – atual</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-grupo">
+        <span class="sidebar-grupo-label">Experiência</span>
+        <span class="tag-bb">Estágio em Dados · Banco do Brasil · 2025 – 2026</span>
+      </div>
+    </div>
   </aside>
 
   <!-- ================= CONTEÚDO ================= -->
@@ -1718,9 +2064,11 @@
 
     <!-- ---------- PAINEL (início) ---------- -->
     <section class="hero tab-panel" id="topo">
-      <div class="eyebrow">PORTFÓLIO · DADOS</div>
-      <h2>Transformando dados em decisões,<br>uma análise por vez.</h2>
-      <p class="sub">Este portfólio é um painel interativo: clique nas ferramentas ou nas barras para filtrar os números e os projetos abaixo.</p>
+      <div class="hero-head">
+        <div class="eyebrow">PORTFÓLIO · DADOS</div>
+        <h2>Transformando dados em decisões, uma análise por vez.</h2>
+        <p class="sub">Este portfólio é um painel interativo: clique nas ferramentas ou nas barras para filtrar os números e os projetos.</p>
+      </div>
 
       <div class="kpis" id="kpis">
         <div class="kpi" id="kpi-proj"><span class="kpi-rotulo">Projetos</span><span class="kpi-valor">0</span><span class="kpi-sub"></span></div>
@@ -1732,8 +2080,6 @@
         <article class="chart-card" id="card-meses"></article>
         <article class="chart-card" id="card-tipos"></article>
         <article class="chart-card largo" id="card-traj"></article>
-      </div>
-
       <div class="destaques">
         <div class="destaques-head">
           <div>
@@ -1744,6 +2090,8 @@
         </div>
         <div class="dest-lista" id="destaques"></div>
       </div>
+      </div>
+
     </section>
 
     <!-- ---------- SOBRE ---------- -->
@@ -2119,7 +2467,7 @@ const esconderTip = () => tip.classList.remove("on");
 document.addEventListener("mouseover", e => { const el = e.target.closest("[data-tip]"); el ? mostrarTip(el) : esconderTip(); });
 document.addEventListener("focusin",  e => { const el = e.target.closest("[data-tip]"); if(el) mostrarTip(el); });
 document.addEventListener("focusout", esconderTip);
-window.addEventListener("scroll", esconderTip, { passive: true });
+document.addEventListener("scroll", esconderTip, { passive: true, capture: true });
 
 /* clique em qualquer tag = filtrar por ela */
 document.addEventListener("click", e => {
@@ -2193,7 +2541,7 @@ function renderKpis(){
 
   setKpi("proj", ps.length, ps.length ? (ps.length === 1 ? "no recorte atual" : "em " + plural(meses, "mês", "meses") + " de atividade") : "nenhum no recorte", fmtInt);
   setKpi("cert", certificados, emAndamento ? "+ " + plural(emAndamento, "formação em andamento", "formações em andamento") : "cursos, eventos e certificações", fmtInt);
-  setKpi("tec", lista.length, "ferramentas e bibliotecas usadas nos projetos · clique para filtrar", fmtInt);
+  setKpi("tec", lista.length, "usadas nos projetos · clique para filtrar", fmtInt);
 
   document.getElementById("kpiTools").innerHTML = lista.length
     ? lista.map(x => {
@@ -2501,7 +2849,7 @@ function fecharCertificado(event){
   document.getElementById("lightboxCertificado").classList.remove("aberto");
   document.getElementById("lightboxCertificadoImg").src = "";
 }
-document.addEventListener("keydown", e => { if(e.key === "Escape") fecharCertificado(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape"){ fecharCertificado(); fecharMenu(); } });
 
 /* =====================================================
    RENDER GERAL
@@ -2546,7 +2894,8 @@ function mostrarAba(id, atualizarHash){
   fecharMenu();
   esconderTip();
   renderFiltrosAtivos();
-  window.scrollTo({ top: 0, behavior: "instant" in document.documentElement.style ? "instant" : "auto" });
+  const painelAtivo = document.getElementById(id);
+  if(painelAtivo) painelAtivo.scrollTop = 0;
 }
 linksNav.forEach(a => a.addEventListener("click", e => { e.preventDefault(); mostrarAba(a.getAttribute("href").slice(1)); }));
 
