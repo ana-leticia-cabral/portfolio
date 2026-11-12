@@ -13,6 +13,14 @@ const CURRICULO = {
 };
 
 const PROJETOS = [
+  {categoria: "Machine Learning",
+   ano: "Outubro, 2026",
+   titulo: "Previsão do sentimento de consumidores de e-commerce brasileiro a partir de suas avaliações — Regressão Logística",
+   link: "https://ana-leticia-cabral.github.io/formacao-plena-analise-ciencia-dados-2026/7-modulo-intermediarioII-outubro2026/projeto-previsao-sentimentos-consumidores/jupyter-notebook/analise-de-sentimentos.html",
+   descricao: "Projeto Multidisciplinar III da formação de Análise e Ciência de dados da Udemy, no qual dei início aos estudos de Aprendizado de Máquina, utilizando dados de um dataset da plataforma Kaggle chamado Merged Olist Brazilian E-Commerce Dataset for EDA (Conjunto de Dados de E-Commerce Brasileiro da Olist Mesclado para EDA).",
+   imagem: img("projeto-sentimento-consumidores.webp"),
+   tags: ["Python", "Pandas", "Re", "Nltk", "Sklearn"],
+  },
   {categoria: "Manipulação e Análise",
    ano: "Outubro, 2026",
    titulo: "Manipulação e análise da base MUNIC 2024 (Pesquisa de Informações Básicas Municipais)",
