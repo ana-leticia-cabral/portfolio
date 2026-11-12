@@ -8,7 +8,7 @@
 const img = arquivo => "assets/img/" + arquivo;
 
 const CURRICULO = {
-  arquivo: "assets/curriculo.pdf",
+  arquivo: "assets/Curriculo-Ana-Leticia-Cabral-do-Rosario.pdf",
   nomeDownload: "Curriculo-Ana-Leticia-Cabral-do-Rosario.pdf"
 };
 
