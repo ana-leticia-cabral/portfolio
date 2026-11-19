@@ -13,6 +13,14 @@ const CURRICULO = {
 };
 
 const PROJETOS = [
+  {categoria: "DASHBOARD",
+   ano: "Novembro, 2026",
+   titulo: "Análise descritiva da participação dos inscritos do ENEM entre 2016 a 2025.",
+   link: "https://app.powerbi.com/view?r=eyJrIjoiMWYzZjQ2MDQtMjliZC00MzViLWEyN2ItOWU4Zjc2OTIxZTZiIiwidCI6Ijk0MDBmNTdkLWIwY2EtNGQzOC1iNzA5LWYxYTA3ZDIyMTY4NyJ9",
+   descricao: "A educação é um dos principais eixos sociais: ela amplia o repertório de conhecimentos, prepara para a convivência em sociedade e abre oportunidades profissionais. O ENEM hoje é a principal porta de entrada para o ensino superior no Brasil. Acompanhar quantas pessoas realmente fazem o exame ao longo do tempo, oferece um panorama da procura por educação superior e as características de quem a busca. <br><br>Fonte dos dados: <br>https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem → Microdados do ENEM. <br>Data da coleta dos dados: 17/11/2026.",
+   imagem: img("projeto-enem.png"),
+   tags: ["Power BI", "DAX", "Power Query"],
+  },
   {categoria: "Machine Learning",
    ano: "Outubro, 2026",
    titulo: "Previsão do sentimento de consumidores de e-commerce brasileiro a partir de suas avaliações — Regressão Logística",
